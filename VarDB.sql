@@ -23,7 +23,7 @@ create database [VarDB]
 		[FirstName] [nvarchar](30) default ('') not NULL,
 		[LastName] [nvarchar](30) default ('') not NULL,
 		[BirthDate] [date] default ('') not null,
-		[RadOnc] [nvarchar] (50) default ('') not null,
+		[RadOnc] [nvarchar] (100) default ('') not null,
 		BLOBImage varBinary(MAX),
 		constraint pk_tbPatient_id primary key (ID),
 		)
@@ -81,22 +81,22 @@ create database [VarDB]
 	go
 
 	insert into tbPatient (FirstName, LastName,Gender,BLOBImage) values ('Lois' , 'Griffin','F',(SELECT * FROM Openrowset(Bulk 'C:/VarTEMP/lois.jpg', SINGLE_BLOB) AS l))
-	insert into tbPatient (FirstName, LastName,BLOBImage) values ('Chris' , 'Griffin',(SELECT * FROM Openrowset(Bulk 'C:/VarTEMP/chris.jpg', SINGLE_BLOB) AS c))
-	insert into tbPatient (FirstName, LastName,Gender,BLOBImage) values ('Brian' , 'Griffin','D',(SELECT * FROM Openrowset(Bulk 'C:/VarTEMP/brian.jpg', SINGLE_BLOB) AS b))
+		insert into tbPatient (FirstName, LastName,BLOBImage) values ('Chris' , 'Griffin',(SELECT * FROM Openrowset(Bulk 'C:/VarTEMP/chris.jpg', SINGLE_BLOB) AS c))
+			insert into tbPatient (FirstName, LastName,Gender,BLOBImage) values ('Brian' , 'Griffin','D',(SELECT * FROM Openrowset(Bulk 'C:/VarTEMP/brian.jpg', SINGLE_BLOB) AS b))
 
-	insert into tbPlan (Description) values ('Plano 1')
-	insert into tbPlan (Description) values ('Plano 2')
-	insert into tbPlan (Description) values ('Plano 3')
-	insert into tbPlan (Description,Approved) values ('Plano 4',0)
+				insert into tbPlan (Description) values ('Plano 1')
+					insert into tbPlan (Description) values ('Plano 2')
+						insert into tbPlan (Description) values ('Plano 3')
+							insert into tbPlan (Description,Approved) values ('Plano 4',0)
 
-	insert into tbCourse (Description) values ('Course 1')
-	insert into tbCourse (Description) values ('Course 2')
-	insert into tbCourse (Description) values ('Course 3')
+								insert into tbCourse (Description) values ('Course 1')
+									insert into tbCourse (Description) values ('Course 2')
+										insert into tbCourse (Description) values ('Course 3')
 
-	insert into tbRCoursePlan (IDCourse,IDPlan) values (2,1)
-	insert into tbRCoursePlan (IDCourse,IDPlan) values (2,4)
-	insert into tbRCoursePlan (IDCourse,IDPlan) values (2,2)
+											insert into tbRCoursePlan (IDCourse,IDPlan) values (2,1)
+												insert into tbRCoursePlan (IDCourse,IDPlan) values (2,4)
+													insert into tbRCoursePlan (IDCourse,IDPlan) values (2,2)
 
-	insert into tbRPatientCourse (IDPatient,IDCourse) values (2,2)
+														insert into tbRPatientCourse (IDPatient,IDCourse) values (2,2)
 
-	insert into tbAppointment (Description,AppointmentDate,IDPatientCourse) values ('Appointment 1',GETDATE(),1)
+															insert into tbAppointment (Description,AppointmentDate,IDPatientCourse) values ('Appointment 1',GETDATE(),1)
